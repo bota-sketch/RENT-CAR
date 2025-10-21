@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚗 Galaxy Rent — Rental Mobil Tomohon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🚀 Galaxy Rent</div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link">Beranda</a></li>
+        <li><a href="#mobil" class="nav-link">Mobil</a></li>
+        <li><a href="#harga" class="nav-link">Harga</a></li>
+        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section">
+    <div class="box">
+      <h1 class="glow-text">Selamat Datang di <span>Galaxy Rent</span></h1>
+      <p>Rental mobil terbaik di Tomohon dengan nuansa luar angkasa — melaju di antara bintang ✨</p>
+      <a href="#mobil" class="btn">Lihat Mobil</a>
+    </div>
+  </section>
+
+  <!-- Mobil -->
+  <section id="mobil" class="section">
+    <div class="box">
+      <h2 class="glow-text">🚙 Pilihan Mobil</h2>
+      <div class="cars">
+        <div class="card">
+          <img src="gambar/fortuner1.jpg" alt="Fortuner">
+          <h3>Toyota Fortuner</h3>
+          <p>Tangguh, elegan, dan bertenaga.</p>
+        </div>
+        <div class="card">
+          <img src="gambar/avanza.jpg " alt="Avanza">
+          <h3>Toyota Avanza</h3>
+          <p>Nyaman dan hemat bahan bakar.</p>
+        </div>
+        
+        <div class="card">
+          <img src="gambar/Innova.jpg" alt="Innova">
+          <h3>Toyota Innova</h3>
+          <p>Kenyamanan dan ruang luas untuk keluarga.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Harga -->
+  <section id="harga" class="section">
+    <div class="box">
+      <h2 class="glow-text">💸 Harga Sewa</h2>
+      <div class="price-list">
+        <div class="price-card">
+          <h3>Fortuner</h3>
+          <p>Rp 750.000 / Hari</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Avanza</h3>
+          <p>Rp 350.000 / Hari</p>
+        </div>
+        
+        <div class="price-card">
+          <h3>Innova</h3>
+          <p>Rp 500.000 / Hari</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="section">
+    <div class="box">
+      <h2 class="glow-text">📞 Hubungi Kami</h2>
+      <p>📍 Ranotongkor, Minahasa  </p>
+      <p>📱 0852-9816-1647</p>
+      <p>✉️ g3rraldyumboh09@gmail.com</p>
+      <a href="#home" class="btn">Kembali ke Beranda</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Galaxy Rent — Mengemudi di Antara Bintang 🌠</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+<script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+    let width, height;
+
+    function initStars() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 200; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.3 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, width, height);
+      for (let s of stars) {
+        s.y += s.speed;
+        if (s.y > height) s.y = 0;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    initStars();
+    animateStars();
+    window.addEventListener("resize", initStars);
+
+  </script>
+
+<!-- ==== Popup Info Mobil ==== -->
+<div id="mobilModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="mobilNama">Nama Mobil</h2>
+    <img id="mobilGambar" src="" alt="Gambar Mobil" />
+    <p id="mobilDeskripsi">Deskripsi mobil akan muncul di sini.</p>
+    <p id="mobilHarga" class="harga"></p>
+  </div>
+</div>
+
+
+</body>
+</html>
