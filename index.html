@@ -10,17 +10,29 @@
   <canvas id="stars"></canvas>
 
   <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">🚀 Galaxy Rent</div>
-    <nav>
-      <ul>
-        <li><a href="#home" class="nav-link">Beranda</a></li>
-        <li><a href="#mobil" class="nav-link">Mobil</a></li>
-        <li><a href="#harga" class="nav-link">Harga</a></li>
-        <li><a href="#kontak" class="nav-link">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header>
+  <nav class="navbar">
+    <div class="logo">
+      <h1>🚗 Galaxy Rent</h1>
+    </div>
+
+    <!-- Menu utama -->
+    <ul class="nav-links">
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#mobil">Mobil</a></li>
+      <li><a href="#harga">Harga</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+
+    <!-- 🔸 Burger Icon -->
+    <div class="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+</header>
+
 
   <section id="home" class="section">
     <div class="box">
@@ -146,6 +158,16 @@
     <p id="mobilHarga" class="harga"></p>
   </div>
 </div>
+
+<script>
+const burger = document.querySelector(".burger");
+const navLinks = document.querySelector(".nav-links");
+
+burger.addEventListener("click", () => {
+  burger.classList.toggle("active");
+  navLinks.classList.toggle("show");
+});
+</script>
 
 
 </body>
